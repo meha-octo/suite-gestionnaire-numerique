@@ -9,6 +9,7 @@ import testingLibrary from 'eslint-plugin-testing-library'
 import perfectionist from 'eslint-plugin-perfectionist'
 import unusedImports from 'eslint-plugin-unused-imports'
 import tseslint from 'typescript-eslint'
+import functional from 'eslint-plugin-functional'
 import 'eslint-plugin-only-warn'
 
 /** @type {import('eslint').Linter.Config[]} */
@@ -32,6 +33,7 @@ export default [
   importPlugin.flatConfigs.typescript,
   jsxA11y.flatConfigs.recommended,
   perfectionist.configs['recommended-alphabetical'],
+  functional.configs.off,
   {
     plugins: {
       '@stylistic': stylistic,
@@ -40,6 +42,18 @@ export default [
   },
   {
     rules: {
+      'functional/immutable-data': ['error', {
+        ignoreClasses: true,
+      }],
+      '@typescript-eslint/no-restricted-types': [
+        'error',
+        {
+          'types': {
+            'Readonly': 'Readonly rend illisible les messages d’erreur TS',
+            // 'ReadonlyXXX': '???',
+          },
+        },
+      ],
       'arrow-body-style': 'off',
       'capitalized-comments': 'off',
       "class-methods-use-this": "off",
