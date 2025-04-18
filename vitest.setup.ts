@@ -1,4 +1,5 @@
 import 'vitest-dom/extend-expect'
+// import './public/htmx.org@2.0.4'
 
 function toOpenInNewTab(element: HTMLElement, content: string): { pass: boolean; message(): string } {
   if (
@@ -24,3 +25,4 @@ expect.extend({
 
 // Cela permet d'éviter la notification "Not implemented: HTMLCanvasElement.prototype.getContext"
 vi.mock('react-chartjs-2', () => ({ Bar: (): null => null, Doughnut: (): null => null }))
+window.htmx = require('htmx.org');

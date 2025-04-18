@@ -43,6 +43,9 @@ export default function Layout({ children }: Readonly<PropsWithChildren>): React
           src="/dsfr-1.13.1.module.min.js"
           strategy="lazyOnload"
         />
+        {/**/<Script
+          src="https://unpkg.com/htmx.org@2.0.4"
+        />/**/}
         {
           process.env.NODE_ENV === 'production' ? (
             <Script

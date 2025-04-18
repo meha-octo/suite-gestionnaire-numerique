@@ -4,6 +4,7 @@ import { LabelValue } from '@/presenters/shared/labels'
 import { noop } from '@/shared/lang'
 
 export default function Select<Value extends number | string>({
+  ajaxPost,
   ariaControlsId,
   children,
   disabled = false,
@@ -25,6 +26,8 @@ export default function Select<Value extends number | string>({
       </label>
       <select
         className="fr-select fr-mb-2w"
+        data-hx-post={ajaxPost}
+        data-hx-swap="none"
         defaultValue={options.find(({ isSelected }) => Boolean(isSelected))?.value}
         disabled={disabled}
         id={id}
@@ -50,11 +53,13 @@ export default function Select<Value extends number | string>({
           ))
         }
       </select>
+      <div id="role-selectionne" />
     </div>
   )
 }
 
 type Props<Value extends number | string> = PropsWithChildren<Readonly<{
+  ajaxPost?: string
   ariaControlsId?: string
   disabled?: boolean
   id: string

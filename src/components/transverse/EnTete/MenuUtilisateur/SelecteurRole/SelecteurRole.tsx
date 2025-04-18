@@ -10,10 +10,10 @@ export default function SelecteurRole({ ariaControlsId }: Props): ReactElement {
 
   return (
     <Select
+      ajaxPost="/api/role"
       ariaControlsId={ariaControlsId}
       id="role"
       name="role"
-      onChange={changerDeRole}
       options={roles.map((role) => ({
         id: role,
         isSelected: role === sessionUtilisateurViewModel.role.nom,

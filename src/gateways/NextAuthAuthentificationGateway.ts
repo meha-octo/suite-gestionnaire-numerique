@@ -107,12 +107,12 @@ const nextAuthOptions = {
 export const handler = NextAuth(nextAuthOptions)
 
 export async function getSession(): Promise<{ user: Profile } | null> {
-  return getServerSession(nextAuthOptions)
+  return process.env.SSO_ID_DEV !== '' ? true : getServerSession(nextAuthOptions)
 }
 
 export async function getSessionSub(): Promise<string> {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  return (await getSession())!.user.sub
+  return process.env.SSO_ID_DEV ?? (await getSession())!.user.sub
 }
 
 export type ProConnectProvider = Readonly<Record<'pro-connect', ClientSafeProvider>>

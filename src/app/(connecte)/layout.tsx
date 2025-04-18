@@ -7,7 +7,7 @@ import EnTete from '@/components/transverse/EnTete/EnTete'
 import LienEvitement from '@/components/transverse/LienEvitement/LienEvitement'
 import PiedDePage from '@/components/transverse/PiedDePage/PiedDePage'
 import { Roles } from '@/domain/Role'
-import { getSession } from '@/gateways/NextAuthAuthentificationGateway'
+import { getSession, getSessionSub } from '@/gateways/NextAuthAuthentificationGateway'
 import { PrismaUtilisateurLoader } from '@/gateways/PrismaUtilisateurLoader'
 import { createSessionUtilisateurPresenter } from '@/presenters/sessionUtilisateurPresenter'
 import config from '@/use-cases/config.json'
@@ -20,7 +20,7 @@ export default async function Layout({ children }: Readonly<PropsWithChildren>):
   }
 
   const utilisateurLoader = new PrismaUtilisateurLoader()
-  const utilisateurReadModel = await utilisateurLoader.findByUid(session.user.sub)
+  const utilisateurReadModel = await utilisateurLoader.findByUid(await getSessionSub())
   const sessionUtilisateurViewModel = createSessionUtilisateurPresenter(utilisateurReadModel)
 
   return (

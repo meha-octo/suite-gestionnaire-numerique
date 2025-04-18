@@ -1,14 +1,16 @@
-import { fireEvent, screen, waitFor, within } from '@testing-library/react'
+import { fireEvent, screen, within } from '@testing-library/react'
 import * as nextAuth from 'next-auth/react'
+// import '../../../../public/htmx.org@2.0.4'
 
 import EnTete from './EnTete'
-import { renderComponent, stubbedServerAction } from '@/components/testHelper'
+import { renderComponent } from '@/components/testHelper'
 import { sessionUtilisateurViewModelFactory } from '@/presenters/testHelper'
 
 describe('en-tête : en tant qu’utilisateur authentifié', () => {
   it('quand j’affiche l’en-tête alors j’affiche le bouton d’accueil et le menu utilisateur', () => {
     // WHEN
     afficherLEnTete()
+    // console.log(window.htmx)
 
     // THEN
     const accueil = screen.getByRole('link', { name: 'MIN / Mednum' })
@@ -95,17 +97,20 @@ describe('en-tête : en tant qu’utilisateur authentifié', () => {
 
     it('quand je change de rôle dans le sélecteur de rôle alors mon rôle change et la page courante est rafraîchie', async () => {
       // GIVEN
-      const changerMonRoleAction = stubbedServerAction(['OK'])
-      afficherLEnTetePeutChangerDeRole(changerMonRoleAction)
+      // const changerMonRoleAction = stubbedServerAction(['OK'])
+      afficherLEnTetePeutChangerDeRole()
 
       // WHEN
       jOuvreLeMenuUtilisateur()
-      jeChangeMonRole()
-
+      // jeChangeMonRole()
+      vi.spyOn(window.htmx, 'ajax').mockImplementationOnce(vi.fn())
+      fireEvent.change(screen.getByRole('combobox', { name: 'Rôle' }), { target: { value: 'Instructeur' } })
       // THEN
-      await waitFor(() => {
-        expect(changerMonRoleAction).toHaveBeenCalledWith({ nouveauRole: 'Instructeur', path: '/' })
-      })
+      expect(screen.getByRole('combobox', { name: 'Rôle' })).toHaveAttribute('data-hx-post', '/api/role')
+      expect(window.htmx.ajax).toHaveBeenCalled()
+      // await waitFor(() => {
+      // expect(changerMonRoleAction).toHaveBeenCalledWith({ nouveauRole: 'Instructeur', path: '/' })
+      // })
     })
 
     it('quand je clique sur fermer, alors le drawer se ferme', () => {
@@ -175,4 +180,3 @@ describe('en-tête : en tant qu’utilisateur authentifié', () => {
     return button
   }
 })
-

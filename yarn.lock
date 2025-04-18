@@ -9112,6 +9112,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"happy-dom@npm:^17.4.4":
+  version: 17.4.4
+  resolution: "happy-dom@npm:17.4.4"
+  dependencies:
+    webidl-conversions: "npm:^7.0.0"
+    whatwg-mimetype: "npm:^3.0.0"
+  checksum: 10c0/a84d36fc633ab5e5a36ae55d82b8955d1e65394242b4dba551ab447579e47f8565de61c361920c248ed2823883715dfa513ce46666800ad53c21dbde858048c2
+  languageName: node
+  linkType: hard
+
 "has-bigints@npm:^1.0.2":
   version: 1.1.0
   resolution: "has-bigints@npm:1.1.0"
@@ -9276,6 +9286,13 @@ __metadata:
     domutils: "npm:^3.1.0"
     entities: "npm:^4.5.0"
   checksum: 10c0/394f6323efc265bbc791d8c0d96bfe95984e0407565248521ab92e2dc7668e5ceeca7bc6ed18d408b9ee3b25032c5743368a4280d280332d782821d5d467ad8f
+  languageName: node
+  linkType: hard
+
+"htmx.org@npm:^1.9.12":
+  version: 1.9.12
+  resolution: "htmx.org@npm:1.9.12"
+  checksum: 10c0/c239a751621501cca35e49c32152b1b7edd1c4f217ef709e84f005346ea0dc0d156cf59b0da91a0dd0b62ddefa98d67945b31e361245c5a2c94cb1b1285fbd2a
   languageName: node
   linkType: hard
 
@@ -11112,6 +11129,8 @@ __metadata:
     eslint-plugin-testing-library: "npm:^7.1.1"
     eslint-plugin-unused-imports: "npm:^4.1.4"
     globals: "npm:^16.0.0"
+    happy-dom: "npm:^17.4.4"
+    htmx.org: "npm:^1.9.12"
     husky: "npm:^9.1.7"
     jsdom: "npm:^26.0.0"
     knip: "npm:^5.47.0"
@@ -14648,6 +14667,13 @@ __metadata:
   dependencies:
     iconv-lite: "npm:0.6.3"
   checksum: 10c0/273b5f441c2f7fda3368a496c3009edbaa5e43b71b09728f90425e7f487e5cef9eb2b846a31bd760dd8077739c26faf6b5ca43a5f24033172b003b72cf61a93e
+  languageName: node
+  linkType: hard
+
+"whatwg-mimetype@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "whatwg-mimetype@npm:3.0.0"
+  checksum: 10c0/323895a1cda29a5fb0b9ca82831d2c316309fede0365047c4c323073e3239067a304a09a1f4b123b9532641ab604203f33a1403b5ca6a62ef405bcd7a204080f
   languageName: node
   linkType: hard
 
